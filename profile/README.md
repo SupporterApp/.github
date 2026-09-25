@@ -1,6 +1,6 @@
-# eFan / SupportersApp — Application Catalog
+# ffan / SupportersApp — Application Catalog
 
-> Catalog of the 18 applications listed in [`efan-supporter-application-list.md`](./efan-supporter-application-list.md).
+> Catalog of the 18 applications listed in [`ffan-supporter-application-list.md`](./ffan-supporter-application-list.md).
 > Built from each project's `README.md` / architecture docs and configuration files (`application.properties`,
 > `package.json`, `pubspec.yaml`, `.env`, deployment scripts). Code was inspected only where a relationship
 > between applications was not documented.
