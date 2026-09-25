@@ -1,4 +1,4 @@
-# ffan / SupportersApp — Application Catalog
+# ffan / SupportersApp — Application Catalogue
 
 > Catalog of the 18 applications listed in [`ffan-supporter-application-list.md`](./ffan-supporter-application-list.md).
 > Built from each project's `README.md` / architecture docs and configuration files (`application.properties`,
