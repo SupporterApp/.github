@@ -553,28 +553,3 @@ sequenceDiagram
 
 ---
 
-## 10. Observations & gaps
-
-1. **Two dashboards, one pattern.** `data-ingestion-dashboard` and `score-computation-dashboard` are both
-   read-only Node/Express validators over GCS (+ Firestore). They differ in module system (ESM vs CommonJS)
-   and in `@google-cloud/storage` usage but otherwise duplicate a lot of scaffolding — a shared base is the
-   obvious consolidation candidate.
-2. **`supporterapp.github.io` still ships the stock Astro blog-template README**, which documents the starter
-   kit rather than the actual site (multilingual blog + help + legal + team leaderboard). Worth rewriting.
-3. **`supportersapp_mobile`'s README is the default `flutter create` text**; the real documentation lives in
-   `ARCHITECTURE.md`, and it is written in Catalan and predates the current dependency set (it lists
-   `firebase_core: ^2.24.2` while `pubspec.yaml` is on `^4.4.0`).
-4. **`supportersapp_tools` has no README** and contains a Firebase service-account key plus generated ID
-   tokens under `users/`. Confirm these are gitignored.
-5. **Project-ID drift.** Services declare `GOOGLE_PROJECT_ID` defaults inconsistently — some use the project
-   number `343004725643`, others the project ID `phonic-altar-450817-q4`. Same project, two spellings.
-6. **`events-service` still documents PostgreSQL/PostGIS + Hibernate Spatial**, but the runtime configuration
-   only wires Firestore and the `venues-searchpos` REST client. The spatial responsibility appears to have
-   moved to `venues-searchpos`/MongoDB; the README lags behind.
-7. **Hard-coded Cloud Run URLs** appear in `score-computation/post-match-events/index.js` and in the mobile
-   app, rather than coming from configuration — a redeploy to a new environment requires code changes.
-8. **`query-injector` code defaults disagree with its `.env`**: `app.py`/`cli.py`/`service_api.py` default
-   `QUARKUS_UPLOAD_URL` to `http://localhost:8080/api/quizzes`, while the real endpoint is
-   `/v1/questions/bulkUpload`.
-9. **`match-data-ingestion` and `score-computation`** both authenticate as a human user (email/password via
-   Identity Toolkit) to reach internal APIs. Workload Identity / service-account tokens would be a stronger fit.
